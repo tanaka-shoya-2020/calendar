@@ -11,4 +11,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "calendars#index"
+  resources :calendars
+  resources :users, only: [:show]
+  resources :teams, only: [:show]
 end
