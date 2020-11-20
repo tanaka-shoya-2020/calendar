@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  root to: "calendars#index"
+  root to: "samples#index"
   resources :calendars
   resources :users, only: [:show]
   resources :teams, only: [:show]
