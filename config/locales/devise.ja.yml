@@ -29,6 +29,7 @@ ja:
       team:
         name: チーム名
         password: パスワード
+        password_confirmation: パスワード（確認用）
     models:
       user: ユーザー
       team: チーム

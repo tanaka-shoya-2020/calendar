@@ -5,74 +5,78 @@ RSpec.describe Team, type: :model do
     @team = FactoryBot.build(:team)
   end
 
-  ##まだやってない
-  describe 'ユーザー新規登録' do
-    context '新規登録がうまくいく時' do
-      it 'nickname,email,password,password_confirmationが全て条件を満たしているとき登録できる' do
-        expect(@user).to be_valid
+  describe 'チーム作成' do
+    context 'チーム作成がうまくいく時' do
+      it 'name,password,password_confirmationが全て条件を満たしているとき登録できる' do
+        expect(@team).to be_valid
+      end
+
+      it 'nameが20文字いないの時' do
+        @team.name = 'a' * 20
+        expect(@team).to be_valid
       end
     end
 
-    context '新規登録がうまくいかない時' do
-      it 'nicknameが空だと登録できない' do
-        @user.nickname = nil
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname can't be blank")
+    context 'チーム作成がうまくいかない時' do
+      it 'nameが空だと登録できない' do
+        @team.name = nil
+        @team.valid?
+        expect(@team.errors.full_messages).to include('チーム名を入力してください')
       end
 
-      it 'emailが空だと登録できない' do
-        @user.email = nil
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Email can't be blank")
+      it 'nameが21文字以上だと登録できない' do
+        @team.name = 'a' * 21
+        @team.valid?
+        expect(@team.errors.full_messages).to include('チーム名は20文字以内で入力してください')
       end
 
-      it 'emailが重複していると登録できない' do
-        @user.save
-        @another_user = FactoryBot.build(:user)
-        @another_user.email = @user.email
-        @another_user.valid?
-        expect(@another_user.errors.full_messages).to include('Email has already been taken')
+      it 'nameは重複して登録できない' do
+        @team.save
+        @another_team = FactoryBot.build(:team)
+        @another_team.name = @team.name
+        @another_team.valid?
+        expect(@another_team.errors.full_messages).to include('チーム名はすでに存在します')
       end
 
       it 'passwordが空だと登録できない' do
-        @user.password = nil
-        @user.password_confirmation = nil
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank")
+        @team.password = nil
+        @team.password_confirmation = nil
+        @team.valid?
+        expect(@team.errors.full_messages).to include('パスワードは不正な値です')
       end
 
       it 'passwordが5文字以下の英数字だと登録できない' do
-        @user.password = '1111a'
-        @user.password_confirmation = @user.password
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
+        @team.password = '1111a'
+        @team.password_confirmation = @team.password
+        @team.valid?
+        expect(@team.errors.full_messages).to include('パスワードは不正な値です')
       end
 
       it 'passwordが6文字以上の英字のみだと登録できない' do
-        @user.password = 'aaaaaa'
-        @user.password_confirmation = @user.password
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Password is invalid')
+        @team.password = 'aaaaaa'
+        @team.password_confirmation = @team.password
+        @team.valid?
+        expect(@team.errors.full_messages).to include('パスワードは不正な値です')
       end
 
       it 'passwordが6文字以上の数字のみだと登録できない' do
-        @user.password = '111111'
-        @user.password_confirmation = @user.password
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Password is invalid')
+        @team.password = '111111'
+        @team.password_confirmation = @team.password
+        @team.valid?
+        expect(@team.errors.full_messages).to include('パスワードは不正な値です')
       end
 
       it 'password_confirmationが空だと登録できない' do
-        @user.password_confirmation = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        @team.password_confirmation = ''
+        @team.valid?
+        expect(@team.errors.full_messages).to include('パスワード（確認用）を入力してください')
       end
 
       it 'passwordとpassword_confirmationが同じでないと登録できない' do
-        @user.password = '11111a'
-        @user.password_confirmation = '1111111a'
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        @team.password = '11111a'
+        @team.password_confirmation = '1111111a'
+        @team.valid?
+        expect(@team.errors.full_messages).to include('パスワード（確認用）とパスワードの入力が一致しません')
       end
     end
   end
