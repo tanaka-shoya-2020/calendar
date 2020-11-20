@@ -19,5 +19,4 @@ class CalendarsController < ApplicationController
 
   def destroy
   end
-
 end
