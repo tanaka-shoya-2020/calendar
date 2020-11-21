@@ -25,7 +25,7 @@ class Teams::SessionsController < Devise::SessionsController
     devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
   end
 
-  def after_sign_in_path_for(resource)
-    calendars_path(resource)
+  def after_sign_in_path_for(_resource)
+    calendars_path
   end
 end

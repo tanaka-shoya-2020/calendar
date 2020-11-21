@@ -25,8 +25,8 @@ class Users::SessionsController < Devise::SessionsController
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     # super(resource)
-    calendars_path(resource)
+    calendars_path
   end
 end
