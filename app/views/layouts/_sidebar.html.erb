@@ -2,11 +2,11 @@
   <div class="sidebar_fixed ">
     <%if user_signed_in? %>
       <ul class="padding-top ">
-        <%= link_to "#{current_user.nickname}さんの予定一覧", user_path(current_user) %>
+        <%= link_to "#{current_user.nickname}さんの予定一覧", calendar_path(current_user) %>
       </ul>
     <% elsif team_signed_in? %>
       <ul class="padding-top ">
-        <%= link_to "チームの予定一覧", team_path(current_team) %>
+        <%= link_to "チームの予定一覧", calendar_path(current_team) %>
       </ul>
     <% else %>
       <ul class="padding-top ">
@@ -15,11 +15,11 @@
     <% end %>
     <%if user_signed_in? %>
       <ul class="padding-top ">
-        <%= link_to "カレンダー", calendar_path(current_user) %>
+        <%= link_to "カレンダー", calendars_path %>
       </ul>
     <% elsif team_signed_in? %>
       <ul class="padding-top ">
-        <%= link_to "カレンダー", calendar_path(current_team) %>
+        <%= link_to "カレンダー", calendars_path %>
       </ul>
     <% else %>
       <ul class="padding-top ">
