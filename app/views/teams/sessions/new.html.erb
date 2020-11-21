@@ -1,0 +1,25 @@
+<div class="sidenav">
+  <div class="login-main-text">
+    <h2>チーム<br> Login Page</h2>
+  </div>
+</div>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="red">
+          <%= flash[:alert] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :チーム名 %><br>
+          <%= f.text_field :name, autofocus: true, placeholder: "チーム名を入力してください", class: "form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :パスワード %><br>
+          <%= f.password_field :password, placeholder: "6文字以上の英数字を入力してください", class: "form-control"%>
+        </div>
+          <%= f.submit "チームに参加する",class: "btn btn-black" %>
+      <% end %>
+    </div>
+  </div>
+</div>

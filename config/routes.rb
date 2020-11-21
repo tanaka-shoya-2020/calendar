@@ -1,3 +1,17 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :teams, controllers: {
+    sessions:      'teams/sessions',
+    passwords:     'teams/passwords',
+    registrations: 'teams/registrations'
+  }
+
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
+  root to: "samples#index"
+  resources :calendars
+  resources :users, only: [:show]
+  resources :teams, only: [:show]
 end

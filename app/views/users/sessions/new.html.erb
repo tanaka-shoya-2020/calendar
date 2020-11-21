@@ -1,0 +1,25 @@
+<div class="sidenav">
+  <div class="login-main-text">
+    <h2>ユーザー<br> Login Page</h2>
+  </div>
+</div>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+      <%= form_with model: @user, url: user_session_path, local: true do |f|  %>
+        <div class="red">
+          <%= flash[:alert] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :Eメール %><br>
+          <%= f.email_field :email, autofocus: true, placeholder: "Eメールを入力してください", autocomplete: "email", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :パスワード %><br>
+          <%= f.password_field :password, placeholder: "6文字以上の英数字を入力してください", class: "form-control"%>
+        </div>
+          <%= f.submit "ログイン",class: "btn btn-black" %>
+      <% end %>
+    </div>
+  </div>
+</div>

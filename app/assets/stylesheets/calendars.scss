@@ -1,0 +1,27 @@
+// Place all the styles related to the rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  padding-top: 55px;
+}
+
+.space{
+  margin: 10px 10px;
+}
+
+.silver{
+  background-color: #C0C0C0;
+}
+
+.height-max{
+  height: 100vh;
+}
+
+.padding-top{
+  padding-top: 20px;
+}
+
+.sidebar_fixed {
+  position: sticky;
+  top: 60px;
+}
