@@ -23,7 +23,6 @@ class CalendarsController < ApplicationController
   def create
     if user_signed_in?
       @event = UserEvent.new(user_event_params)
-      binding.pry
       if @event.valid?
         @event.save
         redirect_to calendars_path
@@ -71,6 +70,6 @@ class CalendarsController < ApplicationController
     end
 
     def team_event_params
-      params.require(:team_event).permit(:title, :event_start, :event_end, :body).merge(team_id: current_team.id)
+      params.require(:team_event).permit(:title, :start_time, :end_time, :body).merge(team_id: current_team.id)
     end
 end

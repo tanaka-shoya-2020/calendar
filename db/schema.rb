@@ -15,10 +15,8 @@ ActiveRecord::Schema.define(version: 2020_11_21_105326) do
   create_table "team_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "body"
-    t.boolean "disp_flg"
-    t.datetime "event_start"
-    t.datetime "event_end"
-    t.string "allDay"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,10 +37,8 @@ ActiveRecord::Schema.define(version: 2020_11_21_105326) do
   create_table "user_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "body"
-    t.boolean "disp_flg"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.string "allDay"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
