@@ -28,30 +28,11 @@
         <button type="button" class="btn btn-info navbar-btn navbar-right space">
           <%= link_to "チームに参加", new_team_session_path %>
         </button>
-      <% elsif user_signed_in? && !team_signed_in? %>
+      <% elsif user_signed_in? %>
         <button type="button" class="btn btn-info navbar-btn navbar-right space">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </button>
-        <button type="button" class="btn btn-info navbar-btn navbar-right space">
-          <%= link_to "チーム作成", new_team_registration_path %>
-        </button>
-        <button type="button" class="btn btn-info navbar-btn navbar-right space">
-          <%= link_to "チームに参加", new_team_session_path %>
-        </button>
-      <% elsif !user_signed_in? && team_signed_in? %>
-        <button type="button" class="btn btn-info navbar-btn navbar-right space">
-          <%= link_to "サインアップ", new_user_registration_path %>
-        </button>
-        <button type="button" class="btn btn-info navbar-btn navbar-right space">
-          <%= link_to "ログイン", new_user_session_path %>
-        </button>
-        <button type="button" class="btn btn-info navbar-btn navbar-right space">
-          <%= link_to "チームログアウト", destroy_team_session_path, method: :delete %>
-        </button>
-      <% else %>
-        <button type="button" class="btn btn-info navbar-btn navbar-right space">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </button>
+      <% elsif team_signed_in? %>
         <button type="button" class="btn btn-info navbar-btn navbar-right space">
           <%= link_to "チームログアウト", destroy_team_session_path, method: :delete %>
         </button>

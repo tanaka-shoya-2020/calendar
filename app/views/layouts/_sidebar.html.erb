@@ -2,28 +2,39 @@
   <div class="sidebar_fixed ">
     <%if user_signed_in? %>
       <ul class="padding-top ">
-        <%= link_to "#{current_user.nickname}さんの予定一覧", user_path(current_user) %>
+        <%# <div class="space">
+          <%= link_to "#{current_user.nickname}さんの予定一覧", calendar_path(current_user) %>
+        <%# </div> %> 
+        <div class="space">
+          <%= link_to "カレンダー", calendars_path %>
+        </div>
+        <div class="space">
+          <%= link_to "予定を作成", new_calendar_path %>
+        </div>
       </ul>
     <% elsif team_signed_in? %>
       <ul class="padding-top ">
-        <%= link_to "チームの予定一覧", team_path(current_team) %>
+        <%# <div class="space">
+          <%= link_to "チームの予定一覧", calendar_path(current_team) %>
+        <%# </div> %> 
+        <div class="space">
+          <%= link_to "カレンダー", calendars_path %>
+        </div>
+        <div class="space">
+          <%= link_to "予定を作成", new_calendar_path %>
+        </div>
       </ul>
     <% else %>
       <ul class="padding-top ">
-        <%= link_to "予定一覧(サンプル)", "#" %>
-      </ul>
-    <% end %>
-    <%if user_signed_in? %>
-      <ul class="padding-top ">
-        <%= link_to "カレンダー", calendar_path(current_user) %>
-      </ul>
-    <% elsif team_signed_in? %>
-      <ul class="padding-top ">
-        <%= link_to "カレンダー", calendar_path(current_team) %>
-      </ul>
-    <% else %>
-      <ul class="padding-top ">
-        <%= link_to "カレンダー(サンプル)", "#" %>
+        <%# <div class="space">
+          <%= link_to "予定一覧(サンプル)", "#" %>
+        <%# </div>  %>
+        <div class="space">
+          <%= link_to "カレンダー(サンプル)", "#" %>
+        </div>
+        <div class="space">
+          <%= link_to "予定を作成", new_calendar_path %>
+        </div>
       </ul>
     <% end %>
   </div>

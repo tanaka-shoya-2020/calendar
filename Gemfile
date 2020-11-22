@@ -62,3 +62,5 @@ gem 'pry-rails'
 gem 'devise'
 
 gem 'rails-i18n'
+
+gem 'simple_calendar', '~> 2.0'

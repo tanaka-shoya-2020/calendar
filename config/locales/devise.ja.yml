@@ -30,9 +30,15 @@ ja:
         name: チーム名
         password: パスワード
         password_confirmation: パスワード（確認用）
+      user_event:
+        title: タイトル
+      team_event:
+        title: タイトル
     models:
       user: ユーザー
       team: チーム
+      user_event: 予定
+      team_event: 予定
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
