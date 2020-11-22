@@ -1,5 +1,4 @@
 class CalendarsController < ApplicationController
-
   before_action :move_to_sign_in
 
   def index
@@ -30,7 +29,7 @@ class CalendarsController < ApplicationController
         @event.save
         redirect_to calendars_path
       else
-        flash[:alert] = "タイトルは50文字以内で入力してください"
+        flash[:alert] = 'タイトルは50文字以内で入力してください'
         render 'calendars/new'
       end
     elsif team_signed_in?
@@ -39,7 +38,7 @@ class CalendarsController < ApplicationController
         @event.save
         redirect_to calendars_path
       else
-        flash[:alert] = "タイトルは50文字以内で入力してください"
+        flash[:alert] = 'タイトルは50文字以内で入力してください'
         render 'calendars/new'
       end
     end
@@ -57,9 +56,7 @@ class CalendarsController < ApplicationController
       end
     elsif team_signed_in?
       @event = TeamEvent.find(params[:id])
-      if @event.valid?
-        @event.update(team_event_params)
-      end
+      @event.update(team_event_params) if @event.valid?
     end
   end
 
@@ -71,18 +68,18 @@ class CalendarsController < ApplicationController
 
   private
 
-    def user_event_params
-      params.require(:user_event).permit(:title, :start_time, :end_time, :body).merge(user_id: current_user.id)
-    end
+  def user_event_params
+    params.require(:user_event).permit(:title, :start_time, :end_time, :body).merge(user_id: current_user.id)
+  end
 
-    def team_event_params
-      params.require(:team_event).permit(:title, :start_time, :end_time, :body).merge(team_id: current_team.id)
-    end
+  def team_event_params
+    params.require(:team_event).permit(:title, :start_time, :end_time, :body).merge(team_id: current_team.id)
+  end
 
-    def move_to_sign_in
-      if !user_signed_in? && !team_signed_in?
-        redirect_to new_user_session_path
-        flash[:alert] = "ログインしてください"
-      end
-    end
+  def move_to_sign_in
+    return unless !user_signed_in? && !team_signed_in?
+
+    redirect_to new_user_session_path
+    flash[:alert] = 'ログインしてください'
+  end
 end

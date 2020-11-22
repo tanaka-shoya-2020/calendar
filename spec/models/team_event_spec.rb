@@ -12,7 +12,7 @@ RSpec.describe TeamEvent, type: :model do
       end
 
       it 'titleが50文字以内であるとき' do
-        @team_event.title = "a" * 50
+        @team_event.title = 'a' * 50
         expect(@team_event).to be_valid
       end
 
@@ -40,15 +40,15 @@ RSpec.describe TeamEvent, type: :model do
       end
 
       it 'titleが50文字以上だと登録できない' do
-        @team_event.title = "a" * 51
+        @team_event.title = 'a' * 51
         @team_event.valid?
-        expect(@team_event.errors.full_messages).to include("タイトルは50文字以内で入力してください")
+        expect(@team_event.errors.full_messages).to include('タイトルは50文字以内で入力してください')
       end
 
       it 'teamとの関連付けがない場合登録できない' do
         @team_event.team = nil
         @team_event.valid?
-        expect(@team_event.errors.full_messages).to include("Teamを入力してください")
+        expect(@team_event.errors.full_messages).to include('Teamを入力してください')
       end
     end
   end
