@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_11_21_105326) do
     t.string "title", null: false
     t.text "body"
     t.boolean "disp_flg"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "event_start"
+    t.datetime "event_end"
     t.string "allDay"
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_11_21_105326) do
     t.string "title", null: false
     t.text "body"
     t.boolean "disp_flg"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.string "allDay"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
