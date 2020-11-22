@@ -6,6 +6,7 @@
 # アプリケーションのURL
 
 https://calendar-prototype-2020.herokuapp.com/
+
 上記のURLからアプリ画面に遷移することができます。
 少し起動時に時間がかかってしまうことがあります。
 
