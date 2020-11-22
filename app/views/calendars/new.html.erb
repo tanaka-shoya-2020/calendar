@@ -3,9 +3,12 @@
   <h1>イベント作成</h1>
 
   <%= form_with model: @event, url: calendars_path, local: true do |f| %>
+    <div class="red">
+      <%= flash[:alert] %>
+    </div>
     <div class="title">
       <%= f.label :タイトル %><br>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, placeholder: "タイトルを入力してください(最大50文字まで)" %>
     </div>
 
     <div class="time">
@@ -20,7 +23,7 @@
 
     <div class="content">
       <%= f.label :詳細 %><br>
-      <%= f.text_field :body %>
+      <%= f.text_field :body ,placeholder: "詳細を入力してください"%>
     </div>
 
     <div class="submit">
