@@ -1,10 +1,10 @@
 <%= render 'layouts/sidebar' %>
 <div class="col-sm-9">
-  <h1>イベント作成</h1>
+  <h1>予定を作成</h1>
 
   <%= form_with model: @event, url: calendars_path, local: true do |f| %>
     <div class="red">
-      <%= flash[:alert] %>
+      <%= render "users/shared/error_messages", resource: @event %>
     </div>
     <div class="title">
       <%= f.label :タイトル %><br>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="submit">
-      <%= f.submit %>
+      <%= f.submit "作成する",class: "btn btn-black" %>
     </div>
   <% end %>
 </div>

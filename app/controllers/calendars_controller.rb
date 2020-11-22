@@ -1,4 +1,7 @@
 class CalendarsController < ApplicationController
+
+  before_action :move_to_sign_in
+
   def index
     if user_signed_in?
       @user = User.find(current_user.id)
@@ -74,5 +77,12 @@ class CalendarsController < ApplicationController
 
     def team_event_params
       params.require(:team_event).permit(:title, :start_time, :end_time, :body).merge(team_id: current_team.id)
+    end
+
+    def move_to_sign_in
+      if !user_signed_in? && !team_signed_in?
+        redirect_to new_user_session_path
+        flash[:alert] = "ログインしてください"
+      end
     end
 end
