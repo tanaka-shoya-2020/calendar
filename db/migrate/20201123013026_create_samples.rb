@@ -5,6 +5,7 @@ class CreateSamples < ActiveRecord::Migration[6.0]
       t.text       :body
       t.datetime   :start_time
       t.datetime   :end_time
+      t.integer    :day
       t.timestamps
     end
   end

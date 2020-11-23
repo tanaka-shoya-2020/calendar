@@ -5,7 +5,7 @@
     <%= date.day %>
     <% events.each do |event| %>
       <div>
-        <%= link_to "#{event.title}", "#" %>
+        <%= link_to "#{event.title}", calendar_path(event) %>
       </div>
     <% end %>
   <% end %>
