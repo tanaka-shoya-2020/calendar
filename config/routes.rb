@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   }
   root to: "samples#index"
   resources :calendars
+  resources :samples
   resources :users, only: [:show]
   resources :teams, only: [:show]
 end

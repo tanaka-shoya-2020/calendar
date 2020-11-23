@@ -34,11 +34,14 @@ ja:
         title: タイトル
       team_event:
         title: タイトル
+      sample:
+        title: タイトル
     models:
       user: ユーザー
       team: チーム
       user_event: 予定
       team_event: 予定
+      sample: 予定
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

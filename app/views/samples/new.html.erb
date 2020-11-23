@@ -1,0 +1,33 @@
+<%= render 'layouts/sidebar' %>
+<div class="col-sm-9">
+  <h1>予定を作成</h1>
+
+  <%= form_with model: @sample, url: samples_path, local: true do |f| %>
+    <div class="red">
+      <%= render "users/shared/error_messages", resource: @event %>
+    </div>
+    <div class="title">
+      <%= f.label :タイトル %><br>
+      <%= f.text_field :title, placeholder: "タイトルを入力してください(最大50文字まで)" %>
+    </div>
+
+    <div class="time">
+      <%= f.label :開始時刻 %><br>
+      <%= f.datetime_select :start_time %>
+    </div>
+
+    <div class="time">
+      <%= f.label :終了時刻 %><br>
+      <%= f.datetime_select :end_time %>
+    </div>
+
+    <div class="content">
+      <%= f.label :詳細 %><br>
+      <%= f.text_field :body ,placeholder: "詳細を入力してください"%>
+    </div>
+
+    <div class="submit">
+      <%= f.submit "作成する",class: "btn btn-black" %>
+    </div>
+  <% end %>
+</div>

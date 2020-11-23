@@ -51,12 +51,19 @@ class CalendarsController < ApplicationController
     if user_signed_in?
       @event = UserEvent.find(params[:id])
       if @event.valid?
-        flash[:alert]
         @event.update(user_event_params)
+      else
+        flash[:alert]
+        render 'calendars/new'
       end
     elsif team_signed_in?
       @event = TeamEvent.find(params[:id])
-      @event.update(team_event_params) if @event.valid?
+      if @event.valid?
+        @event.update(team_event_params)
+      else
+        flash[:alert]
+        render 'calendars/new'
+      end
     end
   end
 
