@@ -1,11 +1,15 @@
 <%= render 'layouts/sidebar' %>
 <div class="col-sm-9">
-  <h1>予定一覧</h1>
+  <h1 class="text-center">一日の予定一覧</h1>
     <% @events.each do |event| %>
-      <div>
-        <%= event.title %><br>
-        <%= event.start_time%><br>
-        <%= event.end_time%><br>
+      <div class="col-sm-8 col-sm-offset-2">
+        
+        <h3>タイトル:  <%= event.title %></h3>
+        <% unless event.body == "" %>
+          <p>詳細:  <%= event.body%></p>
+        <% end %>
+        <p>開始時刻:  <%= event.start_time.to_s(:datetime_jp)%></p>
+        <p>終了時刻:  <%= event.end_time.to_s(:time_jp)%></p>
       </div>
     <% end %>
 </div>
