@@ -126,18 +126,18 @@ RSpec.describe '予定編集機能', type: :system do
       # 一覧画面にはタイトルが表示されていることを確認する
       expect(page).to have_content(@user_event.title)
       # タイトルの下には編集するためのリンクがあることを確認する
-      expect(page).to have_link("編集する")
-      #　編集画面に遷移する
-      click_on("編集する")
+      expect(page).to have_link('編集する')
+      # 　編集画面に遷移する
+      click_on('編集する')
       # 記事の内容を編集する
-      fill_in 'user_event[title]', with: "テスト"
+      fill_in 'user_event[title]', with: 'テスト'
       sleep 1
       # # 変更するボタンをクリックしてもUserEventモデルのカウント数が変わらないことを確認する
-      expect { click_on("変更する") }.to change { UserEvent.count }.by(0)
+      expect { click_on('変更する') }.to change { UserEvent.count }.by(0)
       # カレンダー画面に遷移していることを確認する
       expect(current_path).to eq calendars_path
       # カレンダー画面に先ほど作成した予定が記入されていることを確認する
-      expect(page).to have_content("テスト")
+      expect(page).to have_content('テスト')
     end
   end
 
@@ -165,16 +165,16 @@ RSpec.describe '予定編集機能', type: :system do
       # 一覧画面にはタイトルが表示されていることを確認する
       expect(page).to have_content(@user_event.title)
       # タイトルの下には編集するためのリンクがあることを確認する
-      expect(page).to have_link("編集する")
-      #　編集画面に遷移する
-      click_on("編集する")
+      expect(page).to have_link('編集する')
+      # 　編集画面に遷移する
+      click_on('編集する')
       # 記事の内容を編集する
-      fill_in 'user_event[title]', with: ""
+      fill_in 'user_event[title]', with: ''
       sleep 1
       # # 変更するボタンをクリックしてもUserEventモデルのカウント数が変わらないことを確認する
-      expect { click_on("変更する") }.to change { UserEvent.count }.by(0)
+      expect { click_on('変更する') }.to change { UserEvent.count }.by(0)
       # 編集画面に戻されることを確認する
-      expect(page).to have_content("予定を編集")
+      expect(page).to have_content('予定を編集')
       # 戻された際にエラーメッセージが表示されていることを確認する
       expect(page).to have_content('エラーが発生したため 予定 は保存されませんでした。')
       expect(page).to have_content('タイトルを入力してください')
