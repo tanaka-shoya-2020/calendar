@@ -25,11 +25,9 @@ RSpec.describe 'ユーザー予定作成機能', type: :system do
       find('#user_event_start_time_4i').find("option[value='12']").select_option
       find('#user_event_start_time_5i').find("option[value='00']").select_option
       # 終了時刻の選択
-      find('#user_event_end_time_1i').find("option[value='2020']").select_option
-      find('#user_event_end_time_2i').find("option[value='11']").select_option
-      find('#user_event_end_time_3i').find("option[value='25']").select_option
       find('#user_event_end_time_4i').find("option[value='13']").select_option
       find('#user_event_end_time_5i').find("option[value='00']").select_option
+      sleep 1
       # 詳細の入力
       fill_in 'user_event[body]', with: @user_event.body
       # 作成するボタンをクリックするとUserEventモデルのカウント数が1増えることを確認する
@@ -68,6 +66,41 @@ RSpec.describe 'ユーザー予定作成機能', type: :system do
       expect(current_path).to eq new_user_session_path
       # 戻されたときにエラーメッセージが表示されることを確認する
       expect(page).to have_content('ログインしてください')
+    end
+  end
+end
+
+RSpec.describe '予定一覧機能', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @user_event = FactoryBot.build(:user_event)
+  end
+
+  context '予定一覧機能を確認できるとき' do
+    it '予定を作成したのち、カレンダー画面から予定の詳細ページに遷移する' do
+      # ログインする
+      user_sign_in(@user)
+      # カレンダーのリンクが存在することを確認
+      expect(page).to have_link('カレンダー')
+      # 予定を作成する
+      user_calendar(@user_event)
+      # カレンダー画面にあるタイトルをクリックする
+      click_on(@user_event.title.to_s)
+      # 一日の予定一覧が表示されていることを確認する
+      expect(page).to have_content('一日の予定一覧')
+      # 一覧画面にはタイトルが表示されていることを確認する
+      expect(page).to have_content(@user_event.title)
+    end
+  end
+
+  context '予定一覧機能を確認できないとき' do
+    it 'ログインをしたのみで、予定を作成していない場合' do
+      # ログインする
+      user_sign_in(@user)
+      # カレンダーのリンクが存在することを確認
+      expect(page).to have_link('カレンダー')
+      # カレンダー画面にあるタイトルをクリックする
+      expect(page).to have_no_link(@user_event.title.to_s)
     end
   end
 end
