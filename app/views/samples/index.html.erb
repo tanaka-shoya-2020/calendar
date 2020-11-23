@@ -1,5 +1,12 @@
 <%= render 'layouts/sidebar' %>
 <div class="col-sm-9">
-  <h1>こんにちは</h1>
+  <h1>カレンダー</h1>
+  <%= month_calendar events: @events do |date,events| %>
+    <%= date.day %>
+    <% events.each do |event| %>
+      <div>
+        <%= link_to "#{event.title}", "#" %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
-サンプルです
