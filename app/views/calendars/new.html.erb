@@ -31,3 +31,44 @@
     </div>
   <% end %>
 </div>
+
+<% if user_signed_in?%>
+  <script>
+    function input (){
+
+      const start_year = document.getElementById("user_event_start_time_1i");
+      const start_month = document.getElementById("user_event_start_time_2i");
+      const start_day = document.getElementById("user_event_start_time_3i");
+      
+      const end_year = document.getElementById("user_event_end_time_1i");
+      const end_month = document.getElementById("user_event_end_time_2i");
+      const end_day = document.getElementById("user_event_end_time_3i");
+
+      end_year.value = start_year.value
+      end_month.value = start_month.value
+      end_day.value = start_day.value
+    }
+    setInterval(input, 300);
+  </script>
+<% end %>
+
+<% if team_signed_in? %>
+  <script>
+    function input (){
+
+      const start_year = document.getElementById("team_event_start_time_1i");
+      const start_month = document.getElementById("team_event_start_time_2i");
+      const start_day = document.getElementById("team_event_start_time_3i");
+      
+      const end_year = document.getElementById("team_event_end_time_1i");
+      const end_month = document.getElementById("team_event_end_time_2i");
+      const end_day = document.getElementById("team_event_end_time_3i");
+
+      end_year.value = start_year.value
+      end_month.value = start_month.value
+      end_day.value = start_day.value
+    }
+    setInterval(input, 300);
+  </script>
+<% end %>
+
