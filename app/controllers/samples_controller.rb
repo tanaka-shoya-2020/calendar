@@ -32,7 +32,7 @@ class SamplesController < ApplicationController
 
   private
 
-    def event_params
-      params.permit(:title, :start_time, :end_time, :body)
-    end
+  def event_params
+    params.permit(:title, :start_time, :end_time, :body)
+  end
 end
