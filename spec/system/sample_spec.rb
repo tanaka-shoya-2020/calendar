@@ -23,11 +23,9 @@ RSpec.describe '予定作成機能', type: :system do
       find('#_start_time_4i').find("option[value='12']").select_option
       find('#_start_time_5i').find("option[value='00']").select_option
       # 終了時刻の選択
-      find('#_end_time_1i').find("option[value='2020']").select_option
-      find('#_end_time_2i').find("option[value='11']").select_option
-      find('#_end_time_3i').find("option[value='25']").select_option
       find('#_end_time_4i').find("option[value='13']").select_option
       find('#_end_time_5i').find("option[value='00']").select_option
+      sleep 1
       # 詳細の入力
       fill_in 'body', with: @sample.body
       # 作成するボタンをクリックするとUserEventモデルのカウント数が1増えることを確認する
