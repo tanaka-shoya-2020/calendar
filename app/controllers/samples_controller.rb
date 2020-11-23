@@ -5,7 +5,7 @@ class SamplesController < ApplicationController
 
   def show
     @event  = Sample.find(params[:id])
-    @events = Sample.where(day: @event.start_time.day).order("start_time ASC")
+    @events = Sample.where(day: @event.start_time.day).order('start_time ASC')
   end
 
   def new

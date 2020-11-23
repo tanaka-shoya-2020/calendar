@@ -14,7 +14,7 @@ class CalendarsController < ApplicationController
   def show
     if user_signed_in?
       @event = UserEvent.find(params[:id])
-      @events = UserEvent.where(user_id: current_user.id).where(day: @event.start_time.day).order("start_time ASC")
+      @events = UserEvent.where(user_id: current_user.id).where(day: @event.start_time.day).order('start_time ASC')
     elsif team_signed_in?
       @events = TeamEvent.where(team_id: current_team.id)
     end

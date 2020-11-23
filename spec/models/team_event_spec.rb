@@ -44,7 +44,7 @@ RSpec.describe TeamEvent, type: :model do
       it 'start_timeよりend_timeの時間が早いと登録できない' do
         @team_event.end_time = '2020-11-22 04:57:00'
         @team_event.valid?
-        expect(@team_event.errors.full_messages).to include("終了時刻は開始時刻と同じか、それより後の時刻でなければいけません")
+        expect(@team_event.errors.full_messages).to include('終了時刻は開始時刻と同じか、それより後の時刻でなければいけません')
       end
     end
   end

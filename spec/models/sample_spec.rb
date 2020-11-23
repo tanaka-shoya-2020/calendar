@@ -38,7 +38,7 @@ RSpec.describe Sample, type: :model do
       it 'start_timeよりend_timeの時間が早いと登録できない' do
         @sample.end_time = '2020-11-22 04:57:00'
         @sample.valid?
-        expect(@sample.errors.full_messages).to include("終了時刻は開始時刻と同じか、それより後の時刻でなければいけません")
+        expect(@sample.errors.full_messages).to include('終了時刻は開始時刻と同じか、それより後の時刻でなければいけません')
       end
     end
   end

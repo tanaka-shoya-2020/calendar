@@ -86,9 +86,9 @@ RSpec.describe '予定一覧機能', type: :system do
       # 予定を作成する
       team_calendar(@team_event)
       # カレンダー画面にあるタイトルをクリックする
-      click_on("#{@team_event.title}")
+      click_on(@team_event.title.to_s)
       # 一日の予定一覧が表示されていることを確認する
-      expect(page).to have_content("一日の予定一覧")
+      expect(page).to have_content('一日の予定一覧')
       # 一覧画面にはタイトルが表示されていることを確認する
       expect(page).to have_content(@team_event.title)
     end
@@ -101,9 +101,7 @@ RSpec.describe '予定一覧機能', type: :system do
       # カレンダーのリンクが存在することを確認
       expect(page).to have_link('カレンダー')
       # カレンダー画面にあるタイトルをクリックする
-      expect(page).to have_no_link("#{@team_event.title}")
+      expect(page).to have_no_link(@team_event.title.to_s)
     end
   end
 end
-
-
