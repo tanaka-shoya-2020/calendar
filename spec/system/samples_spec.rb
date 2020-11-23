@@ -57,3 +57,25 @@ RSpec.describe '予定作成機能', type: :system do
     end
   end
 end
+
+RSpec.describe '予定一覧機能', type: :system do
+  before do
+    @sample = FactoryBot.build(:sample)
+  end
+
+  context '予定一覧機能を確認できるとき' do
+    it '予定を作成したのち、カレンダー画面から予定の詳細ページに遷移する' do
+      visit root_path
+      # カレンダーのリンクが存在することを確認
+      expect(page).to have_link('カレンダー(サンプル)')
+      # 予定を作成する
+      sample_create(@sample)
+      # カレンダー画面にあるタイトルをクリックする
+      click_on("#{@sample.title}")
+      # 一日の予定一覧が表示されていることを確認する
+      expect(page).to have_content("一日の予定一覧")
+      # 一覧画面にはタイトルが表示されていることを確認する
+      expect(page).to have_content(@sample.title)
+    end
+  end
+end
