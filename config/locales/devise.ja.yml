@@ -41,7 +41,7 @@ ja:
       team: チーム
       user_event: 予定
       team_event: 予定
-      sample: サンプル
+      sample: 予定
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
