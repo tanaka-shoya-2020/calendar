@@ -17,5 +17,9 @@ module UserCalendarSupport
     fill_in 'user_event[body]', with: @user_event.body
     # 作成するボタンをクリックするとUserEventモデルのカウント数が1増えることを確認する
     expect { find('input.btn-black').click }.to change { UserEvent.count }.by(1)
+    # カレンダー画面に遷移していることを確認する
+    expect(current_path).to eq calendars_path
+    # カレンダー画面に先ほど作成した予定が記入されていることを確認する
+    expect(page).to have_content(@user_event.title.to_s)
   end
 end
