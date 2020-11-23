@@ -16,16 +16,6 @@ RSpec.describe UserEvent, type: :model do
         expect(@user_event).to be_valid
       end
 
-      it 'start_timeが無い場合' do
-        @user_event.start_time = nil
-        expect(@user_event).to be_valid
-      end
-
-      it 'end_timeが無い場合' do
-        @user_event.end_time = nil
-        expect(@user_event).to be_valid
-      end
-
       it 'bodyが無い場合' do
         @user_event.body = nil
         expect(@user_event).to be_valid
@@ -42,13 +32,19 @@ RSpec.describe UserEvent, type: :model do
       it 'titleが21文字以上だと登録できない' do
         @user_event.title = 'a' * 21
         @user_event.valid?
-        expect(@user_event.errors.full_messages).to include('タイトルは50文字以内で入力してください')
+        expect(@user_event.errors.full_messages).to include('タイトルは20文字以内で入力してください')
       end
 
       it 'userとの関連付けがない場合登録できない' do
         @user_event.user = nil
         @user_event.valid?
         expect(@user_event.errors.full_messages).to include('Userを入力してください')
+      end
+
+      it 'start_timeよりend_timeの時間が早いと登録できない' do
+        @user_event.end_time = '2020-11-22 04:57:00'
+        @user_event.valid?
+        expect(@user_event.errors.full_messages).to include("終了時刻は開始時刻と同じか、それより後の時刻でなければいけません")
       end
     end
   end
