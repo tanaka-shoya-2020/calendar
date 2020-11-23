@@ -2,7 +2,7 @@
 <div class="col-sm-9">
   <h1 class="text-center">予定を作成</h1>
   <div class="col-sm-8 col-sm-offset-2">
-    <%= form_with model: @sample, url: samples_path, local: true do |f| %>
+    <%= form_with model: @event, url: samples_path, local: true do |f| %>
       <div class="red">
         <%= render "users/shared/error_messages", resource: @event %>
       </div>
@@ -50,13 +50,13 @@
 
 <script>
   function input (){
-    const start_year = document.getElementById("_start_time_1i");
-    const start_month = document.getElementById("_start_time_2i");
-    const start_day = document.getElementById("_start_time_3i");
+    const start_year = document.getElementById("sample_start_time_1i");
+    const start_month = document.getElementById("sample_start_time_2i");
+    const start_day = document.getElementById("sample_start_time_3i");
     
-    const end_year = document.getElementById("_end_time_1i");
-    const end_month = document.getElementById("_end_time_2i");
-    const end_day = document.getElementById("_end_time_3i");
+    const end_year = document.getElementById("sample_end_time_1i");
+    const end_month = document.getElementById("sample_end_time_2i");
+    const end_day = document.getElementById("sample_end_time_3i");
 
     end_year.value = start_year.value
     end_month.value = start_month.value

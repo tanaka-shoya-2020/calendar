@@ -19,15 +19,24 @@ class SamplesController < ApplicationController
       @event.save
       redirect_to samples_path
     else
-      flash[:alert] = 'タイトルは50文字以内で入力してください'
+      flash[:alert] = 'タイトルは20文字以内で入力してください'
       render 'samples/new'
     end
   end
 
   def edit
+    @event = Sample.find(params[:id])
   end
 
   def update
+    @event = Sample.find(params[:id])
+    @event.update(event_params)
+    if @event.valid?
+      redirect_to samples_path
+    else
+      flash[:alert]
+      render 'samples/edit'
+    end
   end
 
   def destroy
@@ -36,6 +45,6 @@ class SamplesController < ApplicationController
   private
 
   def event_params
-    params.permit(:title, :start_time, :end_time, :body)
+    params.require(:sample).permit(:title, :start_time, :end_time, :body, :day)
   end
 end

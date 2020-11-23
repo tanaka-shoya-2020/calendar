@@ -46,28 +46,35 @@ class CalendarsController < ApplicationController
         @event.save
         redirect_to calendars_path
       else
-        flash[:alert] = 'タイトルは50文字以内で入力してください'
+        flash[:alert] = 'タイトルは20文字以内で入力してください'
         render 'calendars/new'
       end
     end
   end
 
   def edit
+    if user_signed_in?
+      @event = UserEvent.find(params[:id])
+    elsif team_signed_in?
+      @event = TeamEvent.find(param[:id])
+    end
   end
 
   def update
     if user_signed_in?
       @event = UserEvent.find(params[:id])
+      @event.update(user_event_params)
       if @event.valid?
-        @event.update(user_event_params)
+        redirect_to calendars_path
       else
         flash[:alert]
         render 'calendars/new'
       end
     elsif team_signed_in?
       @event = TeamEvent.find(params[:id])
+      @event.update(team_event_params)
       if @event.valid?
-        @event.update(team_event_params)
+        redirect_to calendars_path
       else
         flash[:alert]
         render 'calendars/new'
