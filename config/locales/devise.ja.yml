@@ -36,6 +36,7 @@ ja:
         title: タイトル
       sample:
         title: タイトル
+        end_time: 終了時刻
     models:
       user: ユーザー
       team: チーム
