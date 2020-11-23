@@ -92,4 +92,15 @@ RSpec.describe '予定一覧機能', type: :system do
       expect(page).to have_content(@user_event.title)
     end
   end
+
+  context '予定一覧機能を確認できないとき' do
+    it 'ログインをしたのみで、予定を作成していない場合' do
+      # ログインする
+      user_sign_in(@user)
+      # カレンダーのリンクが存在することを確認
+      expect(page).to have_link('カレンダー')
+      # カレンダー画面にあるタイトルをクリックする
+      expect(page).to have_no_link("#{@user_event.title}")
+    end
+  end
 end
