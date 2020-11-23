@@ -8,7 +8,7 @@
     </div>
     <div class="title">
       <%= f.label :タイトル %><br>
-      <%= f.text_field :title, placeholder: "タイトルを入力してください(最大50文字まで)" %>
+      <%= f.text_field :title, placeholder: "タイトルを入力してください(最大20文字まで)" %>
     </div>
 
     <div class="time">
@@ -17,8 +17,8 @@
     </div>
 
     <div class="time">
-      <%= f.label :終了時刻 %><br>
-      <%= f.datetime_select :end_time %>
+      <%= f.label :終了時刻%><br>
+      <%= f.datetime_select :end_time, discard_year: true, discard_month: true, discard_day: true %>
     </div>
 
     <div class="content">
