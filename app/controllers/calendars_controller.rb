@@ -56,7 +56,7 @@ class CalendarsController < ApplicationController
     if user_signed_in?
       @event = UserEvent.find(params[:id])
     elsif team_signed_in?
-      @event = TeamEvent.find(param[:id])
+      @event = TeamEvent.find(params[:id])
     end
   end
 
