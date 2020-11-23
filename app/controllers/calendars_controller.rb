@@ -60,6 +60,7 @@ class CalendarsController < ApplicationController
       @event = TeamEvent.find(params[:id])
       if @event.valid?
         @event.update(team_event_params)
+      else
         flash[:alert]
         render 'calendars/new'
       end
