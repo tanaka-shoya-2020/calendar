@@ -68,7 +68,7 @@ class CalendarsController < ApplicationController
         redirect_to calendars_path
       else
         flash[:alert]
-        render 'calendars/new'
+        render 'calendars/edit'
       end
     elsif team_signed_in?
       @event = TeamEvent.find(params[:id])
@@ -77,7 +77,7 @@ class CalendarsController < ApplicationController
         redirect_to calendars_path
       else
         flash[:alert]
-        render 'calendars/new'
+        render 'calendars/edit'
       end
     end
   end
