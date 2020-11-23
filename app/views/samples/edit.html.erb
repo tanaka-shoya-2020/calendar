@@ -1,8 +1,8 @@
 <%= render 'layouts/sidebar' %>
 <div class="col-sm-9">
-  <h1 class="text-center">予定を作成</h1>
+  <h1 class="text-center">予定を編集</h1>
   <div class="col-sm-8 col-sm-offset-2">
-    <%= form_with model: @event, url: samples_path, local: true do |f| %>
+    <%= form_with model: @event, url: sample_path(@event), local: true do |f| %>
       <div class="red">
         <%= render "users/shared/error_messages", resource: @event %>
       </div>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="submit">
-        <%= f.submit "作成する",class: "btn btn-black" %>
+        <%= f.submit "変更する",class: "btn btn-black" %>
       </div>
     <% end %>
   </div>
