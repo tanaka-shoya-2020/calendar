@@ -11,18 +11,8 @@ RSpec.describe Sample, type: :model do
         expect(@sample).to be_valid
       end
 
-      it 'titleが50文字以内であるとき' do
-        @sample.title = 'a' * 50
-        expect(@sample).to be_valid
-      end
-
-      it 'start_timeが無い場合' do
-        @sample.start_time = nil
-        expect(@sample).to be_valid
-      end
-
-      it 'end_timeが無い場合' do
-        @sample.end_time = nil
+      it 'titleが20文字以内であるとき' do
+        @sample.title = 'a' * 20
         expect(@sample).to be_valid
       end
 
@@ -39,10 +29,16 @@ RSpec.describe Sample, type: :model do
         expect(@sample.errors.full_messages).to include('タイトルを入力してください')
       end
 
-      it 'titleが50文字以上だと登録できない' do
-        @sample.title = 'a' * 51
+      it 'titleが21文字以上だと登録できない' do
+        @sample.title = 'a' * 21
         @sample.valid?
-        expect(@sample.errors.full_messages).to include('タイトルは50文字以内で入力してください')
+        expect(@sample.errors.full_messages).to include('タイトルは20文字以内で入力してください')
+      end
+
+      it 'start_timeよりend_timeの時間が早いと登録できない' do
+        @sample.end_time = '2020-11-22 04:57:00'
+        @sample.valid?
+        expect(@sample.errors.full_messages).to include("終了時刻は開始時刻と同じか、それより後の時刻でなければいけません")
       end
     end
   end

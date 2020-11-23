@@ -11,8 +11,8 @@ RSpec.describe UserEvent, type: :model do
         expect(@user_event).to be_valid
       end
 
-      it 'titleが50文字以内であるとき' do
-        @user_event.title = 'a' * 50
+      it 'titleが20文字以内であるとき' do
+        @user_event.title = 'a' * 20
         expect(@user_event).to be_valid
       end
 
@@ -39,8 +39,8 @@ RSpec.describe UserEvent, type: :model do
         expect(@user_event.errors.full_messages).to include('タイトルを入力してください')
       end
 
-      it 'titleが50文字以上だと登録できない' do
-        @user_event.title = 'a' * 51
+      it 'titleが21文字以上だと登録できない' do
+        @user_event.title = 'a' * 21
         @user_event.valid?
         expect(@user_event.errors.full_messages).to include('タイトルは50文字以内で入力してください')
       end
