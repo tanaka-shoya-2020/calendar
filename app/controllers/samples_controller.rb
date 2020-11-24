@@ -40,6 +40,13 @@ class SamplesController < ApplicationController
   end
 
   def destroy
+    @event = Sample.find(params[:id])
+    if @event.destroy
+      redirect_to samples_path
+    else
+      flash[:alert]
+      render 'samples/show'
+    end
   end
 
   private
