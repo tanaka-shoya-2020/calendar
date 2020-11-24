@@ -44,8 +44,7 @@ class SamplesController < ApplicationController
     if @event.destroy
       redirect_to samples_path
     else
-      flash[:alert]="削除に失敗しました"
-      @events = Sample.where(day: @event.start_time.day).order('start_time ASC')
+      flash[:alert]
       render 'samples/show'
     end
   end
