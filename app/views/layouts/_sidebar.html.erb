@@ -1,10 +1,7 @@
-<div class="col-xs-3 silver height-max">
-  <div class="sidebar_fixed ">
+<div class="col-sm-3 silver height bottom">
+  <div class="sidebar_fixed">
     <%if user_signed_in? %>
       <ul class="padding-top ">
-        <%# <div class="space">
-          <%= link_to "#{current_user.nickname}さんの予定一覧", calendar_path(current_user) %>
-        <%# </div> %> 
         <div class="space">
           <%= link_to "カレンダー", calendars_path %>
         </div>
@@ -14,9 +11,6 @@
       </ul>
     <% elsif team_signed_in? %>
       <ul class="padding-top ">
-        <%# <div class="space">
-          <%= link_to "チームの予定一覧", calendar_path(current_team) %>
-        <%# </div> %> 
         <div class="space">
           <%= link_to "カレンダー", calendars_path %>
         </div>
@@ -26,9 +20,6 @@
       </ul>
     <% else %>
       <ul class="padding-top ">
-        <%# <div class="space">
-          <%= link_to "予定一覧(サンプル)", "#" %>
-        <%# </div>  %>
         <div class="space">
           <%= link_to "カレンダー(サンプル)", samples_path %>
         </div>

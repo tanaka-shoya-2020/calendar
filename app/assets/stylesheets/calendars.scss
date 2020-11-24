@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body{
-  padding-top: 55px;
+  padding-top: 50px;
 }
+
 
 .space{
   margin: 10px 10px;
@@ -13,9 +14,18 @@ body{
   background-color: #C0C0C0;
 }
 
-.height-max{
-  height: 100vh;
+@media screen and (min-width:768px) {
+  
+  .height{
+    height: 100vh;
+  }
 }
+
+@media screen and (max-width:768px) {
+    .height{
+      height: 100px;
+    }
+  }
 
 .padding-top{
   padding-top: 20px;
@@ -24,6 +34,10 @@ body{
 .sidebar_fixed {
   position: sticky;
   top: 60px;
+}
+
+.bottom {
+  padding-bottom: 30px;
 }
 
 .size {
