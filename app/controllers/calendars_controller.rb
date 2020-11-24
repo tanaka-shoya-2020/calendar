@@ -16,7 +16,7 @@ class CalendarsController < ApplicationController
       @event = UserEvent.find(params[:id])
       @events = UserEvent.where(user_id: current_user.id).where(day: @event.start_time.day).order('start_time ASC')
     elsif team_signed_in?
-      @events = TeamEvent.where(team_id: current_team.id)
+      @events = TeamEvent.where(team_id: current_team.id).where(day: @event.start_time.day).order('start_time ASC')
     end
   end
 
@@ -83,9 +83,25 @@ class CalendarsController < ApplicationController
   end
 
   def destroy
-    event = UserEvent.find(params[:id])
-    event.destroy
-    redirect_to calendars_path
+    if user_signed_in?
+      @event = UserEvent.find(params[:id])
+      if event.destroy
+        redirect_to calendars_path
+      else
+        flash[:alert]="削除に失敗しました"
+        @events = UserEvent.where(user_id: current_user.id).where(day: @event.start_time.day).order('start_time ASC')
+        render 'calendars/show'
+      end
+    elsif team_signed_in?
+      @event = TeamEvent.find(params[:id])
+      if @event.destroy
+        redirect_to calendars_path
+      else
+        flash[:alert]="削除に失敗しました"
+        @events = TeamEvent.where(team_id: current_user.id).where(day: @event.start_time.day).order('start_time ASC')
+        render 'calendars/show'
+      end
+    end
   end
 
   private
