@@ -16,6 +16,7 @@ class CalendarsController < ApplicationController
       @event = UserEvent.find(params[:id])
       @events = UserEvent.where(user_id: current_user.id).where(day: @event.start_time.day).order('start_time ASC')
     elsif team_signed_in?
+      @event = TeamEvent.find(params[:id])
       @events = TeamEvent.where(team_id: current_team.id).where(day: @event.start_time.day).order('start_time ASC')
     end
   end
@@ -85,7 +86,7 @@ class CalendarsController < ApplicationController
   def destroy
     if user_signed_in?
       @event = UserEvent.find(params[:id])
-      if event.destroy
+      if @event.destroy
         redirect_to calendars_path
       else
         flash[:alert]="削除に失敗しました"
