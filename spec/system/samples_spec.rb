@@ -162,3 +162,43 @@ RSpec.describe '予定編集機能', type: :system do
     end
   end
 end
+
+RSpec.describe '予定削除機能', type: :system do
+  before do
+    @sample = FactoryBot.build(:sample)
+  end
+
+  context '予定を削除できるとき' do
+    it '予定を作成したのち、詳細画面から予定を削除することができる' do
+      visit root_path
+      # カレンダーのリンクが存在することを確認
+      expect(page).to have_content('カレンダー')
+      # 予定を作成する
+      sample_create(@sample)
+      # カレンダー画面にあるタイトルをクリックする
+      click_on(@sample.title.to_s)
+      # 一日の予定一覧が表示されていることを確認する
+      expect(page).to have_content('一日の予定一覧')
+      # 一覧画面にはタイトルが表示されていることを確認する
+      expect(page).to have_content(@sample.title)
+      # タイトルの下には編集するためのリンクがあることを確認する
+      expect(page).to have_link('削除する')
+      # 削除するボタンをクリックすると、Sampleモデルのカウント数が1減ることを確認する
+      expect { click_on('削除する') }.to change { Sample.count }.by(-1)
+      # カレンダー画面に遷移していることを確認する
+      expect(current_path).to eq samples_path
+      # カレンダー画面には削除した内容が表示されていないことを確認する
+      expect(page).to have_no_content(@sample.title)
+    end
+  end
+
+  context '予定を削除できないとき' do
+    it '予定を作成していない場合' do
+      visit root_path
+      # カレンダー画面に遷移していることを確認
+      expect(current_path).to eq(root_path)
+      # カレンダー画面には予定が記載されていないことを確認する
+      expect(page).to have_no_content(@sample.title)
+    end
+  end
+end
