@@ -206,7 +206,7 @@ RSpec.describe '予定削除機能', type: :system do
       # タイトルの下には編集するためのリンクがあることを確認する
       expect(page).to have_link('削除する')
       # 削除するボタンをクリックすると、TeamEventモデルのカウント数が1減ることを確認する
-      expect{ click_on("削除する") }.to change { TeamEvent.count }.by(-1)
+      expect { click_on('削除する') }.to change { TeamEvent.count }.by(-1)
       # カレンダー画面に遷移していることを確認する
       expect(current_path).to eq calendars_path
       # カレンダー画面には削除した内容が表示されていないことを確認する
@@ -229,7 +229,7 @@ RSpec.describe '予定削除機能', type: :system do
       # カレンダー画面に遷移せずログイン画面に戻されることを確認する
       expect(current_path).to eq new_user_session_path
       # 戻されたときにエラーメッセージが表示されることを確認する
-      expect(page).to have_content("ログインしてください")
+      expect(page).to have_content('ログインしてください')
     end
   end
 end

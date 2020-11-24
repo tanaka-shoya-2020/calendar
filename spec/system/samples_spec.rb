@@ -184,7 +184,7 @@ RSpec.describe '予定削除機能', type: :system do
       # タイトルの下には編集するためのリンクがあることを確認する
       expect(page).to have_link('削除する')
       # 削除するボタンをクリックすると、Sampleモデルのカウント数が1減ることを確認する
-      expect{ click_on("削除する") }.to change { Sample.count }.by(-1)
+      expect { click_on('削除する') }.to change { Sample.count }.by(-1)
       # カレンダー画面に遷移していることを確認する
       expect(current_path).to eq samples_path
       # カレンダー画面には削除した内容が表示されていないことを確認する

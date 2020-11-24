@@ -89,7 +89,7 @@ class CalendarsController < ApplicationController
       if @event.destroy
         redirect_to calendars_path
       else
-        flash[:alert]="削除に失敗しました"
+        flash[:alert] = '削除に失敗しました'
         @events = UserEvent.where(user_id: current_user.id).where(day: @event.start_time.day).order('start_time ASC')
         render 'calendars/show'
       end
@@ -98,7 +98,7 @@ class CalendarsController < ApplicationController
       if @event.destroy
         redirect_to calendars_path
       else
-        flash[:alert]="削除に失敗しました"
+        flash[:alert] = '削除に失敗しました'
         @events = TeamEvent.where(team_id: current_user.id).where(day: @event.start_time.day).order('start_time ASC')
         render 'calendars/show'
       end
