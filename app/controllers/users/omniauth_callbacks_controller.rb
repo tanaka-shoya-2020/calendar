@@ -8,6 +8,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def twitter
   # end
 
+  def google_oauth2
+    authorization
+  end
+
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
 
@@ -22,6 +26,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   # protected
+  private
+
+  def authorization
+    sns_info = User.from_omniauth(request.env['omniauth.auth'])
+    @user = sns_info[:user]
+    if @user.persisted?
+      sign_in_and_redirect @user, event: :authentication
+    else
+      @sns_id = sns_info[:sns].id
+      render template: 'users/registrations/new'
+    end
+  end
 
   # The path used when OmniAuth fails
   # def after_omniauth_failure_path_for(scope)

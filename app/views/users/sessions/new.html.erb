@@ -19,6 +19,7 @@
           <%= f.password_field :password, placeholder: "6文字以上の英数字を入力してください", class: "form-control"%>
         </div>
           <%= f.submit "ログイン",class: "btn btn-black" %>
+        <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post %>
       <% end %>
     </div>
   </div>
