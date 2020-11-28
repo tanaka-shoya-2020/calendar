@@ -1,6 +1,6 @@
 <%= render 'layouts/sidebar' %>
 <div class="col-sm-9">
-  <h1>カレンダー</h1>
+  <h1 class="text-center">カレンダー</h1>
   <%= month_calendar events: @events do |date,events| %>
     <%= date.day %>
     <% events.each do |event| %>
