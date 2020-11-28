@@ -11,6 +11,11 @@
         <%= link_to "Calendar", root_path, class:"navbar-brand"%>
       <% else %>
         <%= link_to "Calendar", calendars_path, class:"navbar-brand"%>
+        <% if user_signed_in? %> 
+          <%= link_to "#{current_user.nickname}さん", calendars_path, class:"navbar-brand"%>
+        <% elsif team_signed_in? %>
+          <%= link_to "#{current_team.name}さん", calendars_path, class:"navbar-brand"%>
+        <% end %>
       <% end %>
 		</div>
 		
