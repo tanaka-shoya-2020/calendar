@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2020_11_23_013026) do
     t.string "title", null: false
     t.text "body"
     t.datetime "start_time"
-    t.datetime "end_time"
     t.integer "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

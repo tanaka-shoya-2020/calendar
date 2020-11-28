@@ -5,7 +5,7 @@ class SamplesController < ApplicationController
 
   def show
     @event  = Sample.find(params[:id])
-    @events = Sample.where(day: @event.start_time.day).order('start_time ASC')
+    # @events = Sample.where(day: @event.start_time.day).order('start_time ASC')
   end
 
   def new
@@ -14,8 +14,8 @@ class SamplesController < ApplicationController
 
   def create
     @event = Sample.new(event_params)
-    @event.day = @event.start_time.day
     if @event.valid?
+      @event.day = @event.start_time.day
       @event.save
       redirect_to samples_path
     else
@@ -53,6 +53,6 @@ class SamplesController < ApplicationController
   private
 
   def event_params
-    params.require(:sample).permit(:title, :start_time, :end_time, :body, :day)
+    params.require(:sample).permit(:title, :start_time, :body, :day)
   end
 end

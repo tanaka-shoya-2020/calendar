@@ -1,9 +1,10 @@
 class Sample < ApplicationRecord
   validates :title, presence: true, length: { maximum: 20 }
-  validate :start_end_check
-
-  def start_end_check
-    errors.add(:end_time, 'は開始時刻と同じか、それより後の時刻でなければいけません') unless
-    start_time <= end_time
+  # validates :start_time ,presence: true
+  validate :start_check
+  def start_check
+    if start_time == nil
+      errors.add(:start_time, 'が入力されていません')
+    end
   end
 end
