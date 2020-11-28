@@ -13,27 +13,7 @@
 
       <div class="form-group">
         <%= f.label :開始時刻 %><br>
-        <%= raw sprintf(
-          f.datetime_select(
-            :start_time,
-            {
-              start_year:     Time.zone.now.prev_year.year,
-              end_year:       Time.zone.now.next_year.year,
-              default:        Time.zone.now,
-              use_two_digit_numbers: true,
-              date_separator: '%s',
-              datetime_separator: '%s',
-              time_separator: '%s'
-            },
-            { class: 'date-select' }
-          ),
-          '年 ', '月 ', '日 ', ':  ')# 分 は最後につけ加えられる
-        %> 
-      </div>
-
-      <div class="form-group">
-        <%= f.label :終了時刻%><br>
-        <%= f.datetime_select :end_time, discard_year: true, discard_month: true, discard_day: true %>
+        <%= f.datetime_field :start_time %>
       </div>
 
       <div class="form-group">
@@ -47,20 +27,3 @@
     <% end %>
   </div>
 </div>
-
-<script>
-  function input (){
-    const start_year = document.getElementById("sample_start_time_1i");
-    const start_month = document.getElementById("sample_start_time_2i");
-    const start_day = document.getElementById("sample_start_time_3i");
-    
-    const end_year = document.getElementById("sample_end_time_1i");
-    const end_month = document.getElementById("sample_end_time_2i");
-    const end_day = document.getElementById("sample_end_time_3i");
-
-    end_year.value = start_year.value
-    end_month.value = start_month.value
-    end_day.value = start_day.value
-  }
-  setInterval(input, 200);
-</script>
