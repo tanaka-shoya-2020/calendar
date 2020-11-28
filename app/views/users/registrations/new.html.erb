@@ -18,15 +18,22 @@
           <%= f.label :Eメール %><br>
           <%= f.email_field :email,  placeholder: "Eメールを入力してください", autocomplete: "email", class: "form-control" %>
         </div>
-        <div class="form-group">
-          <%= f.label :パスワード %><br>
-          <%= f.password_field :password, placeholder: "6文字以上の英数字を入力してください", class: "form-control"%>
-        </div>
-        <div class="form-group">
-          <%= f.label :パスワード確認 %><br />
-          <%= f.password_field :password_confirmation, placeholder: "もう一度入力してください", class: "form-control" %>
-        </div>
+        <%if @sns_id.present? %>
+          <%= hidden_field_tag :sns_auth, true %>
+        <% else %>
+          <div class="form-group">
+            <%= f.label :パスワード %><br>
+            <%= f.password_field :password, placeholder: "6文字以上の英数字を入力してください", class: "form-control"%>
+          </div>
+          <div class="form-group">
+            <%= f.label :パスワード確認 %><br />
+            <%= f.password_field :password_confirmation, placeholder: "もう一度入力してください", class: "form-control" %>
+          </div>
+        <% end%>
           <%= f.submit "サインアップ",class: "btn btn-black" %>
+        <% if !@sns_id.present?%>
+          <%= link_to 'Googleで新規登録', user_google_oauth2_omniauth_authorize_path, class: "btn btn-info",method: :post %>
+        <% end %>
       <% end %>
     </div>
   </div>
