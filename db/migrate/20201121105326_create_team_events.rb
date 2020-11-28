@@ -4,7 +4,6 @@ class CreateTeamEvents < ActiveRecord::Migration[6.0]
       t.string     :title ,        null: false
       t.text       :body
       t.datetime   :start_time
-      t.datetime   :end_time
       t.integer    :day
       t.references :team,          null:false, foreign_key: true
       t.timestamps
