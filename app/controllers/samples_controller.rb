@@ -30,6 +30,7 @@ class SamplesController < ApplicationController
 
   def update
     @event = Sample.find(params[:id])
+    @event.day = @event.start_time.day
     @event.update(event_params)
     if @event.valid?
       redirect_to samples_path
