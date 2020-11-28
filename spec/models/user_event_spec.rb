@@ -38,9 +38,9 @@ RSpec.describe UserEvent, type: :model do
       it 'start_timeがないと登録できない' do
         @user_event.start_time = nil
         @user_event.valid?
-        expect(@user_event.errors.full_messages).to include("開始時刻が入力されていません")
+        expect(@user_event.errors.full_messages).to include('開始時刻が入力されていません')
       end
-      
+
       it 'userとの関連付けがない場合登録できない' do
         @user_event.user = nil
         @user_event.valid?

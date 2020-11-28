@@ -5,8 +5,6 @@ class UserEvent < ApplicationRecord
   validate :start_check
 
   def start_check
-    if start_time == nil
-      errors.add(:start_time, 'が入力されていません')
-    end
+    errors.add(:start_time, 'が入力されていません') if start_time.nil?
   end
 end

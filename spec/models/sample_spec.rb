@@ -38,7 +38,7 @@ RSpec.describe Sample, type: :model do
       it 'start_timeが存在しないと登録できない' do
         @sample.start_time = nil
         @sample.valid?
-        expect(@sample.errors.full_messages).to include("開始時刻が入力されていません")
+        expect(@sample.errors.full_messages).to include('開始時刻が入力されていません')
       end
     end
   end

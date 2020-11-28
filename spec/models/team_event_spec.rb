@@ -38,7 +38,7 @@ RSpec.describe TeamEvent, type: :model do
       it 'start_timeがないと登録できない' do
         @team_event.start_time = nil
         @team_event.valid?
-        expect(@team_event.errors.full_messages).to include("開始時刻が入力されていません")
+        expect(@team_event.errors.full_messages).to include('開始時刻が入力されていません')
       end
 
       it 'teamとの関連付けがない場合登録できない' do
