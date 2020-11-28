@@ -64,6 +64,7 @@ class CalendarsController < ApplicationController
   def update
     if user_signed_in?
       @event = UserEvent.find(params[:id])
+      @event.day = @event.start_time.day
       @event.update(user_event_params)
       if @event.valid?
         redirect_to calendars_path
@@ -73,6 +74,7 @@ class CalendarsController < ApplicationController
       end
     elsif team_signed_in?
       @event = TeamEvent.find(params[:id])
+      @event.day = @event.start_time.day
       @event.update(team_event_params)
       if @event.valid?
         redirect_to calendars_path
