@@ -11,7 +11,7 @@ RSpec.describe Team, type: :model do
         expect(@team).to be_valid
       end
 
-      it 'nameが20文字いないの時' do
+      it 'nameが20文字以内の時' do
         @team.name = 'a' * 20
         expect(@team).to be_valid
       end

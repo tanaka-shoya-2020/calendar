@@ -5,15 +5,7 @@ module TeamCalendarSupport
     expect(current_path).to eq new_calendar_path
     # タイトルを入力
     fill_in 'team_event[title]', with: team_event.title
-    # 開始時刻の選択
-    find('#team_event_start_time_1i').find("option[value='2020']").select_option
-    find('#team_event_start_time_2i').find("option[value='11']").select_option
-    find('#team_event_start_time_3i').find("option[value='25']").select_option
-    find('#team_event_start_time_4i').find("option[value='12']").select_option
-    find('#team_event_start_time_5i').find("option[value='00']").select_option
-    # 終了時刻の選択
-    find('#team_event_end_time_4i').find("option[value='13']").select_option
-    find('#team_event_end_time_5i').find("option[value='00']").select_option
+    fill_in 'team_event[start_time]', with: team_event.start_time
     sleep 1
     # 詳細の入力
     fill_in 'team_event[body]', with: team_event.body

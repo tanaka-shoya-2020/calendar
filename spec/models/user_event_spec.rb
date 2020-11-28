@@ -35,16 +35,16 @@ RSpec.describe UserEvent, type: :model do
         expect(@user_event.errors.full_messages).to include('タイトルは20文字以内で入力してください')
       end
 
+      it 'start_timeがないと登録できない' do
+        @user_event.start_time = nil
+        @user_event.valid?
+        expect(@user_event.errors.full_messages).to include('開始時刻が入力されていません')
+      end
+
       it 'userとの関連付けがない場合登録できない' do
         @user_event.user = nil
         @user_event.valid?
         expect(@user_event.errors.full_messages).to include('Userを入力してください')
-      end
-
-      it 'start_timeよりend_timeの時間が早いと登録できない' do
-        @user_event.end_time = '2020-11-22 04:57:00'
-        @user_event.valid?
-        expect(@user_event.errors.full_messages).to include('終了時刻は開始時刻と同じか、それより後の時刻でなければいけません')
       end
     end
   end

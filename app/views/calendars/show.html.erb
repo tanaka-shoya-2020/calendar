@@ -8,7 +8,6 @@
           <p>詳細:  <%= event.body%></p>
         <% end %>
         <p>開始時刻:  <%= event.start_time.to_s(:datetime_jp)%></p>
-        <p>終了時刻:  <%= event.end_time.to_s(:time_jp)%></p>
         <div class="btn btn-warning">
           <%= link_to "編集する", edit_calendar_path(event) %>
         </div>

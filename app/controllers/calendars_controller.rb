@@ -32,8 +32,8 @@ class CalendarsController < ApplicationController
   def create
     if user_signed_in?
       @event = UserEvent.new(user_event_params)
-      @event.day = @event.start_time.day
       if @event.valid?
+        @event.day = @event.start_time.day
         @event.save
         redirect_to calendars_path
       else
@@ -42,8 +42,8 @@ class CalendarsController < ApplicationController
       end
     elsif team_signed_in?
       @event = TeamEvent.new(team_event_params)
-      @event.day = @event.start_time.day
       if @event.valid?
+        @event.day = @event.start_time.day
         @event.save
         redirect_to calendars_path
       else
@@ -108,11 +108,11 @@ class CalendarsController < ApplicationController
   private
 
   def user_event_params
-    params.require(:user_event).permit(:title, :start_time, :end_time, :body, :day).merge(user_id: current_user.id)
+    params.require(:user_event).permit(:title, :start_time, :body, :day).merge(user_id: current_user.id)
   end
 
   def team_event_params
-    params.require(:team_event).permit(:title, :start_time, :end_time, :body, :day).merge(team_id: current_team.id)
+    params.require(:team_event).permit(:title, :start_time, :body, :day).merge(team_id: current_team.id)
   end
 
   def move_to_sign_in
