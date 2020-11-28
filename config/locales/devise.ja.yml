@@ -32,10 +32,10 @@ ja:
         password_confirmation: パスワード（確認用）
       user_event:
         title: タイトル
-        end_time: 終了時刻
+        start_time: 開始時刻
       team_event:
         title: タイトル
-        end_time: 終了時刻
+        start_time: 開始時刻
       sample:
         title: タイトル
         start_time: 開始時刻

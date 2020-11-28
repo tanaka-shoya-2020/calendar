@@ -40,7 +40,6 @@ RSpec.describe Sample, type: :model do
         @sample.valid?
         expect(@sample.errors.full_messages).to include("開始時刻が入力されていません")
       end
-    
     end
   end
 end
