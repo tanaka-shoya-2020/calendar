@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_11_23_013026) do
     t.string "title", null: false
     t.text "body"
     t.datetime "start_time"
-    t.datetime "end_time"
     t.integer "day"
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -48,7 +47,6 @@ ActiveRecord::Schema.define(version: 2020_11_23_013026) do
     t.string "title", null: false
     t.text "body"
     t.datetime "start_time"
-    t.datetime "end_time"
     t.integer "day"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
