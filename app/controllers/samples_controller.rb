@@ -1,12 +1,10 @@
 class SamplesController < ApplicationController
-  
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-
   def index
     @events = Sample.all
   end
 
   def show
+    @event  = Sample.find(params[:id])
     @events = Sample.where(day: @event.start_time.day).order('start_time ASC')
   end
 
@@ -27,9 +25,11 @@ class SamplesController < ApplicationController
   end
 
   def edit
+    @event = Sample.find(params[:id])
   end
 
   def update
+    @event = Sample.find(params[:id])
     @event.update(event_params)
     if @event.valid?
       @event.day = @event.start_time.day
@@ -42,6 +42,7 @@ class SamplesController < ApplicationController
   end
 
   def destroy
+    @event = Sample.find(params[:id])
     if @event.destroy
       redirect_to samples_path
     else
@@ -55,9 +56,5 @@ class SamplesController < ApplicationController
 
   def event_params
     params.require(:sample).permit(:title, :start_time, :body, :day)
-  end
-
-  def set_event
-    @event = Sample.find(params[:id])
   end
 end
