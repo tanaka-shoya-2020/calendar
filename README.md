@@ -18,9 +18,9 @@ http://calen-proto-2020.tk
 | foobar1@gmail.com | foobar1　　 |
 
 ### チーム用
-|　メールアドレス　　　 |　パスワード　|
+|　チーム名　　　      |　パスワード　|
 |-------------------|------------|
-| foobar1@gmail.com | foobar1　　 |
+| テストチーム        | foobar1　　 |
 
 ## 要件定義
 
@@ -34,13 +34,13 @@ http://calen-proto-2020.tk
 |編集機能の導入                              |ユーザーがカレンダーの投稿内容を編集するため                               |
 |削除機能の導入                              |投稿したカレンダーの内容を削除するため                                    |
 |HerokuからAWSのEC2へデータの移行             |アプリケーションの管理をより細かくカスタマイズするため                      |
-
+|Googleアカウントでのログイン機能の追加         | ユーザーにとってより使いやすいサービスにするため                          |
 
 
 
 ## テーブル設計
 
-![calendar](https://user-images.githubusercontent.com/71364105/100170919-fcf41d80-2f09-11eb-992f-280b7a8eedfa.png)
+![calendar ](https://user-images.githubusercontent.com/71364105/100534730-68652480-3255-11eb-9fb6-c36e32e7587d.png)
 
 ## インフラ設計図
 
