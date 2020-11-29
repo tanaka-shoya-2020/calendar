@@ -44,6 +44,7 @@ http://calen-proto-2020.tk
 
 ## インフラ設計図
 
+![Query](https://user-images.githubusercontent.com/71364105/100172114-f74b0780-2f0a-11eb-9e2c-ee873c73475d.png)
 
 ## ローカルでの動作方法
 
